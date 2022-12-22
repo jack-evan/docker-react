@@ -10,5 +10,15 @@ script:
   #  - docker run jack-evan/docker-react
   - docker run -e CI=true jack-evan/docker-react npm run test
 
-
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  envrionment: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-west-2-389010963264"
+  bucket_path: "docker-react"
+  on:
+    branch: main
+  access_key_id: $aws-access-key
+  secret_access_key: "aws-secret-access-key"
 
